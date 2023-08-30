@@ -24,7 +24,13 @@ function createGridElements(grid, numberOfElements) {
 function createGridElement() {
   const element = document.createElement('div');
   element.classList.add('grid-element');
+  element.addEventListener('click', changeElementColor);
   return element;
+}
+
+function changeElementColor(event) {
+  this.style.backgroundColor =
+    this.style.backgroundColor === 'black' ? 'white' : 'black';
 }
 
 drawGrid(16);
