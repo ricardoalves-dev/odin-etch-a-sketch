@@ -1,5 +1,3 @@
-const initialValue = 25;
-
 function drawGrid(numberOfElements) {
   const grid = document.querySelector('.grid');
   deleteGridElements(grid);
@@ -41,9 +39,17 @@ function changeRangeValue(event) {
   drawGrid(this.value);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelector('#range').addEventListener('input', changeRangeValue);
-  document.querySelector('#range').dispatchEvent(new Event('click'));
-});
+function clearElementsColor() {
+  const elements = document.querySelectorAll('.grid-element');
+  elements.forEach((element) => (element.style.backgroundColor = 'white'));
+}
 
-drawGrid(initialValue);
+document.addEventListener('DOMContentLoaded', function () {
+  const initialValue = 16;
+  document.querySelector('#range').value = initialValue;
+  document.querySelector('#range').addEventListener('input', changeRangeValue);
+  document.querySelector('#range').dispatchEvent(new Event('input'));
+  document
+    .querySelector('.clear-btn')
+    .addEventListener('click', clearElementsColor);
+});
